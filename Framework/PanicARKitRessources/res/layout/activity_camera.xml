@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/CameraActivity"
+                    android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+    <view class="com.dopanic.panicarkit.lib.PARCameraView" android:id="@+id/cameraView"
+             android:layout_width="fill_parent" android:layout_height="fill_parent"/>
+
+    <RelativeLayout android:id="@+id/ARScreen"
+                    android:layout_width="fill_parent" android:layout_height="fill_parent"
+                    android:layout_alignParentBottom="true" android:layout_above="@+id/bottomBar">
+
+
+    </RelativeLayout>
+
+    <RelativeLayout android:id="@+id/bottomBar"
+                    android:layout_width="fill_parent" android:layout_height="50dp"
+                    android:layout_alignParentBottom="true" >
+
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/headingText"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Large Text"
+                android:id="@+id/rotationText"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>
