@@ -52,7 +52,7 @@ Add relevant source code
         
         android:name=„.YourAppClassName"
         
-- Add permission to be able to the camera of your testing device. Set following tag in your manifest’s root tag
+- Add permission to be able to have access to the camera of your testing device. Set following tag in your manifest’s root tag
 
         <uses-permission android:name="android.permission.CAMERA"></uses-permission>
         
