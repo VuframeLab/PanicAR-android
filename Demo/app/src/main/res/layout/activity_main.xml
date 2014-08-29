@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".MainActivity"
+                >
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearLayout1"
+        android:padding="10dp">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Launch AR (portrait-only)"
+            android:id="@+id/button5"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="false"
+            android:onClick="startARPortrait"
+            android:layout_alignParentRight="false"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Launch AR (landscape-only)"
+            android:id="@+id/button6"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="false"
+            android:onClick="startARLandscape"
+            android:layout_alignParentRight="false"
+            android:layout_margin="8dp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Launch AR (auto-orienting)"
+            android:id="@+id/button7"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="false"
+            android:onClick="startARAutoOrienting"
+            android:layout_alignParentRight="false"
+            android:layout_margin="8dp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

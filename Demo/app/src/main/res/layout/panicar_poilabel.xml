@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.dopanic.panicarkit.lib.PARView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="256dp"
+    android:layout_height="128dp"
+    android:background="@drawable/default_poi_label"
+    android:id="@+id/poiLabelBackgroundImage"
+    android:layout_gravity="center"
+    android:paddingLeft="10dp"
+    android:paddingTop="16dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="44dp">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/poiLabelTitle"
+        android:tag="title"
+        android:text="title"
+        android:textColor="@android:color/black"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/poiLabelDescription"
+        android:layout_below="@+id/poiLabelTitle"
+        android:text="description"
+        android:tag="description"
+        android:layout_alignLeft="@+id/poiLabelTitle"
+        android:layout_marginTop="4dp" />
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:id="@+id/poiLabelIconImageView"
+        android:scaleType="centerCrop"
+        android:layout_alignParentRight="true"
+        android:tag="icon"
+        android:visibility="visible"
+        android:background="#ffe8e8e8" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/poiLabelDistance"
+        android:text="distance"
+        android:tag="distance"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:gravity="right" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/poiLabelAltitude"
+        android:text="altitude"
+        android:tag="altitude"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="4dp"
+        android:layout_alignParentBottom="true" />
+</com.dopanic.panicarkit.lib.PARView>

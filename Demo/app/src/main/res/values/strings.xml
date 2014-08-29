@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PanicAR Demo</string>
+    <string name="action_add_random_poi">Create random POI</string>
+    <string name="action_delete_last_poi">Delete last created POI</string>
+    <string name="action_delete_all_pois">Delete all POIs</string>
+
+</resources>

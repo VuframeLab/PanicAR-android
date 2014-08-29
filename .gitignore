@@ -1,1 +1,47 @@
+# OSX
 .DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
+
+
+# JAVA
+*.class
+*.war
+*.ear
+
+# IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# Eclipse
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.externalToolBuilders/
+*.launch
+.cproject
+.buildpath
+
+# Gradle
+.gradle/
+build/
+
+
+/PanicSensorKit

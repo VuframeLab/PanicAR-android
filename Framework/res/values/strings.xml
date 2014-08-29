@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">PanicARKit-android</string>
+    <string name="alert_dialog">AR is not supported by your device.</string>
+</resources>
