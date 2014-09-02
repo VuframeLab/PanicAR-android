@@ -67,9 +67,9 @@ First thing you need is a `Location` e.g.
 
 Add this location to the constructor of `PARPoiLabel` and some further details like title and description. The resources `panicar_poilabel` and `radar_dot` should be already in your res folder
 
-    final PARPoiLabelAdvanced parPoiLabel = new PARPoiLabelAdvanced(poiLocation, "title", "description", R.layout.panicar_poilabel, R.drawable.radar_dot);
+    final PARPoiLabelAdvanced label = new PARPoiLabelAdvanced(poiLocation, "title", "description", R.layout.panicar_poilabel, R.drawable.radar_dot);
 		
-To add a background use
+To optinally add a background use
 
 	label.setBackgroundImageResource(R.drawable.custom_poi_label);
 and use 
@@ -106,7 +106,7 @@ You need to set your API key within your App class (your App class has to derive
 
 	@Override
 	    public String setApiKey() {
-        return "";
+        return "yourAPIKey";
     }
 
 [![Analytics](https://ga-beacon.appspot.com/UA-47538502-1/panicar/home)](https://github.com/dopanic/panicar)
