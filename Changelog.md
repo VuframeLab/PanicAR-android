@@ -4,6 +4,14 @@
 
 ---
 
+### 1.0 (build 1029)
+
+- Refactored Demo
+- fixed many bugs
+
 ### 1.0 (build 1017)
 
 - add: demo app project
+
+
+

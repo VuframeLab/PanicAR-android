@@ -5,6 +5,9 @@
     <item android:id="@+id/action_add_random_poi"
         android:title="@string/action_add_random_poi"
         android:showAsAction="never" />
+    <item android:id="@+id/action_add_cardinal_pois"
+        android:title="@string/action_add_cardinal_pois"
+        android:showAsAction="never" />
     <item android:id="@+id/action_delete_last_poi"
         android:title="@string/action_delete_last_poi"
         android:showAsAction="never" />
