@@ -7,17 +7,17 @@
     <com.dopanic.panicarkit.lib.PARCameraView
         android:id="@+id/arCameraView"
         android:tag="arCameraView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
 
 
 
     <com.dopanic.panicarkit.lib.PARView
         android:id="@+id/arContentView"
         android:tag="arContentView"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentBottom="true" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
     <com.dopanic.panicarkit.lib.PARRadarView
         android:layout_width="128dp"
@@ -25,11 +25,13 @@
         android:gravity="center"
         android:background="@drawable/radar_screen"
         android:id="@+id/arRadarView"
-        android:tag="arRadarView"/>
+        android:tag="arRadarView"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true" />
 
     <TextView
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:id="@+id/deviceOrientation"
         android:tag="debugTextView"
@@ -38,7 +40,8 @@
         android:padding="10dp"
         android:background="#66ffffff"
         android:inputType="text|textNoSuggestions|textMultiLine|textImeMultiLine"
-        android:textColor="@android:color/black" />
+        android:textColor="@android:color/black"
+        android:layout_alignParentRight="true" />
 
 
 </RelativeLayout>

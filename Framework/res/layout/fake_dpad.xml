@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/arMainLayout"
+    android:tag="arMainLayout"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+    <com.dopanic.panicarkit.lib.PARCameraView
+        android:id="@+id/arCameraView"
+        android:tag="arCameraView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"/>
+
+
+
+    <com.dopanic.panicarkit.lib.PARView
+        android:id="@+id/arContentView"
+        android:tag="arContentView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentBottom="true" />
+
+    <com.dopanic.panicarkit.lib.PARRadarView
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:gravity="center"
+        android:background="@drawable/radar_screen"
+        android:id="@+id/arRadarView"
+        android:tag="arRadarView"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:id="@+id/deviceOrientation"
+        android:tag="debugTextView"
+        android:layout_alignParentTop="true"
+        android:text="debugTextView"
+        android:padding="10dp"
+        android:background="#66ffffff"
+        android:inputType="text|textNoSuggestions|textMultiLine|textImeMultiLine"
+        android:textColor="@android:color/black" />
+
+    <RelativeLayout
+        android:id="@+id/fakeDpad"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:gravity="bottom">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Create Snapshot"
+                    android:id="@+id/fakeSnapshot"
+                    android:layout_gravity="bottom"
+                    />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Activate Fake"
+                    android:id="@+id/activateFake" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="North"
+                    android:id="@+id/North"
+                    android:layout_gravity="bottom" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="East"
+                    android:id="@+id/East"
+                    android:layout_gravity="bottom" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="South"
+                    android:id="@+id/South"
+                    android:layout_gravity="bottom" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="West"
+                    android:id="@+id/West"
+                    android:layout_gravity="bottom" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

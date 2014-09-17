@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 import com.dopanic.panicarkit.lib.PARFragment;
 import com.dopanic.panicarkit.lib.PARController;
+import com.dopanic.panicarkit.lib.PARPoi;
 import com.dopanic.panicarkit.lib.PARPoiLabel;
 import com.dopanic.panicarkit.lib.PARPoiLabelAdvanced;
 import com.dopanic.panicsensorkit.PSKDeviceAttitude;
@@ -41,46 +42,17 @@ public class PanicARFragment extends PARFragment {
 
         // add content using helper methods defined below
         // example to add costume drawable
-        PARPoiLabel label = createPoi("Regensburger Dom", "(NORD-OST) Regensburg",
-                49.01947485100683,
-                12.097727581858635);
+        PARPoiLabel label = createPoi("Regensburg", "doPanic Headquarter, Germany", 49.01824, 12.0953);
         label.setBackgroundImageResource(R.drawable.custom_poi_label);
         label.setSize(384, 192);
         PARController.getInstance().addPoi(label);
 
-        label = createPoi("Berlin",  "Berlin",
-                52.523402,
-                13.41141,
-                35.0); // altitude
+        label = createPoi("Berlin", "Germany", 52.523402, 13.41141, 35.0); // altitude
         label.setIconImageViewResource(R.drawable.poi_icon);
         label.setOffset(new Point(0, 100));
         PARController.getInstance().addPoi(label);
-
-        PARController.getInstance().addPoi(createPoi(
-                "Neupfarrkirche",
-                "Am Neupfarrplatz",
-                49.018269042391786,
-                12.09614172577858));
-        PARController.getInstance().addPoi(createPoi(
-                "Kaufhof",
-                "(OST) Am Neupfarrplatz",
-                49.01848012697194,
-                12.097044289112091));
-        PARController.getInstance().addPoi(createPoi(
-                "Swarovski",
-                "(NW) Gesandtenstr.",
-                49.018366669121356,
-                12.09497831761837));
-        PARController.getInstance().addPoi(createPoi(
-                "Alex Cafe",
-                "(NNO) Am Neupfarrplatz",
-                49.018718475567624,
-                12.096399888396263));
-        PARController.getInstance().addPoi(createPoi(
-                "Hemingway",
-                "(S) Augustinerstr.",
-                49.01795681147559,
-                12.094875052571297));
+        PARController.getInstance().addPoi(createPoi("Paris", "France", 48.856614, 2.352222));
+        PARController.getInstance().addPoi(createPoi("London", "United Kingdom", 51.507351, -0.127758));
 
         initLabelRepo();
 
@@ -111,21 +83,17 @@ public class PanicARFragment extends PARFragment {
             case R.id.action_add_random_poi:
                 int random = (new Random().nextInt(labelRepo.size()-1)+0);
                 PARController.getInstance().addPoi(labelRepo.get(random));
-                Toast.makeText(
-                        this.getActivity(),
-                        "Added: " + labelRepo.get(random).getTitle(),
-                        Toast.LENGTH_SHORT).show();
+                Toast.makeText(this.getActivity(),"Added: " + labelRepo.get(random).getTitle(), Toast.LENGTH_SHORT).show();
                 return super.onOptionsItemSelected(item);
             case R.id.action_add_cardinal_pois:
                 createCDPOIs();
                 return super.onOptionsItemSelected(item);
             case R.id.action_delete_last_poi:
-                int lastObject = PARController.getInstance().numberOfObjects()-1;
-                Toast.makeText(
-                        this.getActivity(),
-                        "Removing: " + PARController.getInstance().getObject(lastObject),
-                        Toast.LENGTH_SHORT).show();
-                PARController.getInstance().removeObject(lastObject);
+                if (PARController.getInstance().numberOfObjects() > 0){
+                    int lastObject = PARController.getInstance().numberOfObjects()-1;
+                    Toast.makeText(this.getActivity(),"Removing: " + ((PARPoiLabel)PARController.getInstance().getObject(lastObject)).getTitle(), Toast.LENGTH_SHORT).show();
+                    PARController.getInstance().removeObject(lastObject);
+                }
                 return super.onOptionsItemSelected(item);
             case R.id.action_delete_all_pois:
                 PARController.getInstance().clearObjects();
@@ -140,10 +108,7 @@ public class PanicARFragment extends PARFragment {
     @Override
     public void onDeviceOrientationChanged(PSKDeviceOrientation newOrientation) {
         super.onDeviceOrientationChanged(newOrientation);
-        Toast.makeText(
-                getActivity(),
-                "onDeviceOrientationChanged: " + PSKDeviceAttitude.rotationToString(newOrientation),
-                Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(), "onDeviceOrientationChanged: " + PSKDeviceAttitude.rotationToString(newOrientation), Toast.LENGTH_LONG).show();
     }
 
     //==============================================================================================
@@ -163,20 +128,12 @@ public class PanicARFragment extends PARFragment {
         poiLocation.setLatitude(lat);
         poiLocation.setLongitude(lon);
 
-        final PARPoiLabel parPoiLabel = new PARPoiLabel(
-                poiLocation,
-                title,
-                description,
-                R.layout.panicar_poilabel,
-                R.drawable.radar_dot);
+        final PARPoiLabel parPoiLabel = new PARPoiLabel(poiLocation, title, description, R.layout.panicar_poilabel, R.drawable.radar_dot);
 
         parPoiLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(
-                        getActivity(),
-                        parPoiLabel.getTitle() + " - " + parPoiLabel.getDescription(),
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), parPoiLabel.getTitle() + " - " + parPoiLabel.getDescription(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -192,33 +149,18 @@ public class PanicARFragment extends PARFragment {
      * @param lon         Longitude of poi
      * @return PARPoiLabelAdvanced which is a subclass of PARPoiLabel (extended for altitude support)
      */
-    public PARPoiLabelAdvanced createPoi(
-            String title,
-            String description,
-            double lat,
-            double lon,
-            double alt) {
+    public PARPoiLabelAdvanced createPoi(String title, String description, double lat, double lon, double alt) {
         Location poiLocation = new Location(title);
         poiLocation.setLatitude(lat);
         poiLocation.setLongitude(lon);
         poiLocation.setAltitude(alt);
 
-        final PARPoiLabelAdvanced parPoiLabel = new PARPoiLabelAdvanced(
-                poiLocation,
-                title,
-                description,
-                R.layout.panicar_poilabel,
-                R.drawable.radar_dot);
-
+        final PARPoiLabelAdvanced parPoiLabel = new PARPoiLabelAdvanced(poiLocation, title, description, R.layout.panicar_poilabel, R.drawable.radar_dot);
         parPoiLabel.setIsAltitudeEnabled(true);
-
         parPoiLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(
-                        getActivity(),
-                        parPoiLabel.getTitle() + " - " + parPoiLabel.getDescription(),
-                        Toast.LENGTH_LONG).show();
+                Toast.makeText(getActivity(), parPoiLabel.getTitle() + " - " + parPoiLabel.getDescription(), Toast.LENGTH_LONG).show();
             }
         });
 
@@ -239,11 +181,6 @@ public class PanicARFragment extends PARFragment {
     // holds a set of example pois, which are gonna created randomly
     private void initLabelRepo(){
         labelRepo.add(createRepoPoi("Regensburg", "doPanic Headquarter, Germany", 49.01824, 12.0953));
-        labelRepo.add(createRepoPoi("Neupfarrkirche", "Am Neupfarrplatz", 49.018269042391786, 12.09614172577858));
-        labelRepo.add(createRepoPoi("Kaufhof", "(OST) Am Neupfarrplatz", 49.01848012697194, 12.097044289112091));
-        labelRepo.add(createRepoPoi("Swarovski", "(NW) Gesandtenstr.", 49.018366669121356, 12.09497831761837));
-        labelRepo.add(createRepoPoi("Alex Cafe", "(NNO) Am Neupfarrplatz", 49.018718475567624, 12.096399888396263));
-        labelRepo.add(createRepoPoi("Hemingway", "(S) Augustinerstr.", 49.01795681147559, 12.094875052571297));
         labelRepo.add(createRepoPoi("Munic", "Germany", 48.1351253, 11.581980599999952));
         labelRepo.add(createRepoPoi("Nuernberg", "Germany", 49.45203, 11.07675));
         labelRepo.add(createRepoPoi("Frankfurt", "Germany", 50.1109221, 8.682126700000026));
@@ -279,22 +216,16 @@ public class PanicARFragment extends PARFragment {
      * adds 4 points in cardinal direction at current location
      */
     private void createCDPOIs(){
-//        double degreeCorrection = 0.01; // approx 1000 meter
-        double degreeCorrection = 0.001; // approx 121 meter
-//        double degreeCorrection = 0.0001; // approx 12 meter
+
+        double degreeCorrection = 0.1;    // approx 7700 meter
+        //double degreeCorrection = 0.01; // approx 1000 meter
+        //double degreeCorrection = 0.001; // approx 121 meter
+        //double degreeCorrection = 0.0001; // approx 12 meter
         Location currentLocation = PSKDeviceAttitude.sharedDeviceAttitude().getLocation();
 
-        PARController.getInstance().addPoi(createPoi("North", "",
-                currentLocation.getLatitude()+degreeCorrection, 
-                currentLocation.getLongitude()));
-        PARController.getInstance().addPoi(createPoi("South", "",
-                currentLocation.getLatitude()-degreeCorrection, 
-                currentLocation.getLongitude()));
-        PARController.getInstance().addPoi(createPoi("West", "", 
-                currentLocation.getLatitude(), 
-                currentLocation.getLongitude()-degreeCorrection));
-        PARController.getInstance().addPoi(createPoi("East", "", 
-                currentLocation.getLatitude(), 
-                currentLocation.getLongitude()+degreeCorrection));
+        PARController.getInstance().addPoi(createPoi("North", "", currentLocation.getLatitude()+degreeCorrection, currentLocation.getLongitude()));
+        PARController.getInstance().addPoi(createPoi("South", "", currentLocation.getLatitude()-degreeCorrection, currentLocation.getLongitude()));
+        PARController.getInstance().addPoi(createPoi("West", "",  currentLocation.getLatitude(),                  currentLocation.getLongitude()-degreeCorrection));
+        PARController.getInstance().addPoi(createPoi("East", "",  currentLocation.getLatitude(),                  currentLocation.getLongitude()+degreeCorrection));
     }
 }

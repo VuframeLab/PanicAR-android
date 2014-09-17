@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<com.dopanic.panicarkit.lib.PARView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="256dp"
     android:layout_height="128dp"
     android:background="@drawable/default_poi_label"
@@ -54,4 +54,4 @@
         android:textColor="@android:color/black"
         android:layout_marginTop="4dp"
         android:layout_alignParentBottom="true" />
-</com.dopanic.panicarkit.lib.PARView>
+</RelativeLayout>
