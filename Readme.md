@@ -109,4 +109,20 @@ You need to set your API key within your App class (your App class has to derive
         return "yourAPIKey";
     }
 
+### How to send Bugs to doPanic?
+The best way to communicate bugs is sending us an email with information on these topics:
+
+- Which devices do you use?
+- Which Android version is installed?
+- Does it work in our demo?
+- What is your workflow when using PanicAR?
+- Which function is affected?
+- Which methods are overwritten?
+- Can you send your logcat output?
+- If it is a graphical problem: can you send a screenshot additionally?
+- Better: can you send a video?
+- Your own comments:
+- Give us feedback for PanicAR:
+
+
 [![Analytics](https://ga-beacon.appspot.com/UA-47538502-1/panicar/home)](https://github.com/dopanic/panicar)
